@@ -38,10 +38,6 @@ src/
 │   │   └── UserComponent.jsx # UI components for the user feature //
 ```
 
-## redux store
-
-_The Redux Toolkit store is a centralized location where the entire state of your application is managed. It is a core concept of Redux, enhanced and simplified by Redux Toolkit to reduce boilerplate and complexity in setting up a Redux application._
-
 ## Slice in redux toolkit
 
 _In Redux Toolkit, a slice is a modular way to manage a specific piece of the application's state._
@@ -83,6 +79,47 @@ export const { setUser, clearUser, setLoading } = userSlice.actions;
 // Export the reducer to be combined in the store
 export default userSlice.reducer;
 ```
+
+#### state inside an action creator function of the reducer
+
+```js
+setUser(state, action) {
+      state.currentUser = action.payload;
+    },
+// state here refers to the initial state object
+
+let state =  {
+    currentUser: null,
+    loading: false,
+  }
+
+// to upadete a state property we do it like
+state.currentUser
+state.loading
+
+```
+
+### Why Do We Need Slices?
+
+#### Feature-Based Organization:
+
+- By grouping state and logic related to a feature (e.g., user, posts), slices make the codebase more modular and easier to maintain.
+
+#### Encapsulation:
+
+- Each slice manages its own state, reducing the complexity of dealing with a monolithic state structure.
+
+#### Improved Readability:
+
+- Developers can easily locate where the state and logic for a specific feature live.
+
+#### Auto-Generated Actions:
+
+- With createSlice, you don’t need to manually define action types or action creators. They are automatically created based on the reducers.
+
+## Redux store
+
+_The Redux Toolkit store is a centralized location where the entire state of your application is managed. It is a core concept of Redux, enhanced and simplified by Redux Toolkit to reduce boilerplate and complexity in setting up a Redux application._
 
 ###### The store:
 
